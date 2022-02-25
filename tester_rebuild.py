@@ -29,7 +29,7 @@ class Task(QMainWindow, QWidget):
 
         self.n = n
 
-        name_of_file = 'main_task_ui.ui'
+        name_of_file = 'des\main_task_ui.ui'
         uic.loadUi(name_of_file, self)
 
         self.setWindowTitle(f'Задание №{self.n}')
@@ -178,7 +178,7 @@ class Res(QMainWindow, QWidget):
         self.l_of_id = l_of_id
         self.n = n
 
-        uic.loadUi('res_des.ui', self)
+        uic.loadUi(f'des\{"res_des.ui"}', self)
         self.setWindowTitle('Результат')
         self.res_label.setText(
             f'{self.counter_right_var} / {self.counter - 1}')
@@ -223,11 +223,11 @@ class Res(QMainWindow, QWidget):
             indexcounter_sub = 0
 
         if self.counter_right_var <= 5:
-            self.pixmap = QPixmap('fail2.jpg')
+            self.pixmap = QPixmap(f'data\{"fail2.jpg"}')
             self.label.setPixmap(self.pixmap)
             self.label.move(30, 150)
         else:
-            self.pixmap = QPixmap('gatsby.jpg')
+            self.pixmap = QPixmap('data\gatsby.jpg')
             self.label.setPixmap(self.pixmap)
             self.label.move(100, 150)
         # вставляем картинку в соответствии с результатом
@@ -270,7 +270,7 @@ class Explanation(QMainWindow, QWidget):
         """
         super().__init__()
 
-        uic.loadUi('explanation.ui', self)
+        uic.loadUi('des\explanation.ui', self)
         self.setWindowTitle('Пояснение')
 
         self.l_of_id = l_of_id
@@ -297,7 +297,7 @@ class Adder(QMainWindow, QWidget):
     def __init__(self):
         super().__init__()
 
-        uic.loadUi('adder.ui', self)
+        uic.loadUi(f'des\{"adder.ui"}', self)
         self.setWindowTitle('Добавление задания')
         self.task_fname, self.expl_fname = '', ''
         self.pushButton_add.clicked.connect(self.add_task)
@@ -373,7 +373,7 @@ class Application(QMainWindow, QWidget):
 
     def __init__(self):
         super().__init__()
-        uic.loadUi('main_des_updated.ui', self)
+        uic.loadUi('des\main_des_updated.ui', self)
         self.setWindowTitle(
             'Тренажёр для подготовки к ЕГЭ по русскому языку')
         self.task_4.clicked.connect(self.start_task)
@@ -515,7 +515,7 @@ class Application(QMainWindow, QWidget):
 
 
 # устанавливаем соединение с БД
-con = sqlite3.connect('tester_rebuild_database.db')
+con = sqlite3.connect(f'db\{"tester_rebuild_database.db"}')
 cur = con.cursor()
 
 if __name__ == '__main__':
